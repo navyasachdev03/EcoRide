@@ -134,9 +134,9 @@ function Search() {
                     <div className="md:w-3/4 w-full">
                         {searchPerformed ? (
                             rides.length === 0 ? (
-                                <div className="mt-12 ml-10">
+                                <div className="md:mt-12 md:ml-20 mx-auto">
                                     <p className="text-gray-800 text-xl font-bold ml-10">No rides found! Search for a different ride!</p>
-                                    <img src="img4.jpg" alt="img" className="h-60 w-auto mt-5 ml-10" />
+                                    <img src="img4.png" alt="img" className="h-60 w-auto mt-5 ml-10 mb-20" />
                                 </div>
                             ) : (
                                 <div className="p-10">
