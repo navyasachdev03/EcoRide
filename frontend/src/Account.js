@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './Navbar';
 import './App.css';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useRides } from './RidesContext';
 
 const Account = ({ onLogin }) => {
     const [isLogin, setIsLogin] = useState(true);
@@ -19,7 +20,11 @@ const Account = ({ onLogin }) => {
         setShowPassword(!showPassword);
     };
 
+    const { resetRides } = useRides();
+
     const handleLogin = () => {
+
+        resetRides();
 
         fetch('http://localhost:3000/login', {
             method: 'POST',
