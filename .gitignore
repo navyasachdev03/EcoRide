@@ -2,4 +2,8 @@
 **/node_modules/
 
 # Ignore .env files
-backend/.env
+.env
+
+# Other files
+.gitattributes
+.DS_STORE
