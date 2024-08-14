@@ -124,10 +124,10 @@ ecoride/
 │       ├── app.js             # Express app setup
 │       └── constants.js       # Defining constants like database name
 │
-├── frontend/                  # Frontend folder
-│   ├── public/                # Public assets
-│   ├── src/                   # React components and pages
-│   └── tailwind.config.js     # Tailwind CSS configuration file
+└── frontend/                  # Frontend folder
+    ├── public/                # Public assets
+    ├── src/                   # React components and pages
+    └── tailwind.config.js     # Tailwind CSS configuration file
 ```
 
 ## Contributing
