@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
-import Navbar from "./Navbar";
-import "./App.css";
+import Navbar from "../components/Navbar";
+import '../App.css';
 // import { useNavigate } from "react-router-dom";
-import API_BASE_URL from "./ApiBaseURL";
+import API_BASE_URL from "../ApiBaseURL";
 
 const Verification = ({ onVerify }) => {
   // const navigate = useNavigate();
@@ -156,7 +156,7 @@ useEffect(() => {
             YOU'RE JUST ONE STEP AWAY!!
           </h2>
           <img
-            src="ver.png"
+            src="assets/ver.png"
             alt="logo"
             className="w-auto h-45 md:w-auto md:h-80 mt-4 md:mt-8"
           />

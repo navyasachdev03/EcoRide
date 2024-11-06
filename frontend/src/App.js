@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Home from './Home';
-import Search from './Search';
-import OfferRide from './OfferRide';
-import Account from './Account';
-import Faq from './Faq';
-import MyRides from './MyRides';
-import Profile from './Profile';
+import Home from './pages/Home';
+import Search from './pages/Search';
+import OfferRide from './pages/OfferRide';
+import Account from './pages/Account';
+import Faq from './pages/Faq';
+import MyRides from './pages/MyRides';
+import Profile from './pages/Profile';
+import Verification from './pages/Verification';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import Verification from './Verification';
 
 function App() {
 
@@ -43,8 +43,11 @@ function App() {
   }, [userData]);
 
   const determineOfferElement = () => {
-    if (userData) {
-      return isDriverVerified ? <OfferRide userData={userData}/> : <Verification onVerify={handleProfileVerification} />;
+
+    if(userData){
+      if (userData.isDriver) {
+        return isDriverVerified ? <OfferRide userData={userData}/> : <Verification onVerify={handleProfileVerification} />;
+      }
     }
     return <Verification onVerify={handleProfileVerification} />; 
   };

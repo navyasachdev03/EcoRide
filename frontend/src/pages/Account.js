@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Navbar from './Navbar';
-import './App.css';
+import Navbar from '../components/Navbar';
+import '../App.css';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useRides } from './RidesContext';
-import API_BASE_URL from './ApiBaseURL';
+import { useRides } from '../context/RidesContext';
+import API_BASE_URL from '../ApiBaseURL';
 
 const Account = ({ onLogin }) => {
     const [isLogin, setIsLogin] = useState(true);
@@ -135,7 +135,7 @@ const Account = ({ onLogin }) => {
             <div id="account" className="flex flex-col md:flex-row mt-20 md:ml-10">
                 <div>
                     <h1 className="text-3xl font-bold md:mt-10 mt-10 ml-5 md:ml-12 text-slate-800">Share the Ride! <br />&emsp;&emsp;&emsp;Share the Journey!</h1>
-                    <img src="acc.jpg" alt='logo' className="w-auto h-50 md:w-auto md:h-80 mx-auto md:ml-12 mt-4 md:mt-8" />
+                    <img src="assets/acc.jpg" alt='logo' className="w-auto h-50 md:w-auto md:h-80 mx-auto md:ml-12 mt-4 md:mt-8" />
                 </div>
                 <div className="w-3/4 md:w-1/4 md:mt-10 flex flex-col md:ml-20 ml-8 md:py-10">
 

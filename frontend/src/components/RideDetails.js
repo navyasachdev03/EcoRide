@@ -1,7 +1,7 @@
 import React from "react";
 import { FaPhone, FaCarRear } from "react-icons/fa6";
 import { GoDot } from "react-icons/go";
-import { useRides } from './RidesContext';
+import { useRides } from '../context/RidesContext';
 
 function RideDetails({ ride }) {
 

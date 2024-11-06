@@ -28,7 +28,7 @@ const Navbar = () => {
     <nav className="bg-white p-4 flex justify-between fixed top-0 w-full z-10">
       <div className="flex">
         <Link to="/" className="flex">
-          <img src="logo.png" alt="Logo" className="h-12 w-12 ml-5 mr-1" />
+          <img src="assets/logo.png" alt="Logo" className="h-12 w-12 ml-5 mr-1" />
           <h5 className="text-cyan-800 text-3xl font-bold mt-1 hidden md:flex">coRide</h5>
         </Link>
       </div>

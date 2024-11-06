@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar";
 import { SlUser } from "react-icons/sl";
 import { CiCirclePlus } from "react-icons/ci";
 import { MdEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import Footer from "./Footer";
-import API_BASE_URL from './ApiBaseURL';
+import Footer from "../components/Footer";
+import API_BASE_URL from '../ApiBaseURL';
 
 function Profile({ userData }) {
 

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar";
-import SearchBar from "./SearchBar";
-import RideDetails from "./RideDetails";
+import Navbar from "../components/Navbar";
+import SearchBar from "../components/SearchBar";
+import RideDetails from "../components/RideDetails";
 import { IoTimeOutline } from "react-icons/io5";
 import { TbStackPush, TbStackPop } from "react-icons/tb";
 import { MdPersonAddAlt } from "react-icons/md";
-import API_BASE_URL from './ApiBaseURL';
+import API_BASE_URL from '../ApiBaseURL';
 
 function Search() {
 
@@ -138,7 +138,7 @@ function Search() {
                             rides.length === 0 ? (
                                 <div className="md:mt-12 md:ml-20 mx-auto">
                                     <p className="text-gray-800 text-xl font-bold ml-10">No rides found! Search for a different ride!</p>
-                                    <img src="img4.png" alt="img" className="h-60 w-auto mt-5 ml-10 mb-20" />
+                                    <img src="assets/img4.png" alt="img" className="h-60 w-auto mt-5 ml-10 mb-20" />
                                 </div>
                             ) : (
                                 <div className="p-10">
