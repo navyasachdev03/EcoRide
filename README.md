@@ -130,6 +130,15 @@ ecoride/
     └── tailwind.config.js     # Tailwind CSS configuration file
 ```
 
+
+## Deployed Website
+
+The EcoRide application has been deployed on Vercel. It can be accessed through the following url: https://eco-ride.vercel.app
+
 ## Contributing
 
 Contributions are welcome! Please fork this repository and submit a pull request for any features, bugs, or enhancements.
+
+
+
+

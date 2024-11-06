@@ -46,7 +46,7 @@ function App() {
     if (userData) {
       return isDriverVerified ? <OfferRide userData={userData}/> : <Verification onVerify={handleProfileVerification} />;
     }
-    return <Verification onVerify={handleProfileVerification} />;
+    return <Verification onVerify={handleProfileVerification} />; 
   };
 
 

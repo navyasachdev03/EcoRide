@@ -7,3 +7,5 @@ backend/.env
 # Other files
 .gitattributes
 .DS_Store
+
+**/.gitignore

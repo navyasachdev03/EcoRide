@@ -230,7 +230,7 @@ const Account = ({ onLogin }) => {
                         {isLogin ? '' : 'Already have an account?'}
                     </p>
 
-                </div>
+                </div> 
             </div>
         </div>
     );
