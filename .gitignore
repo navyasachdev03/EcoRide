@@ -8,4 +8,5 @@ backend/.env
 .gitattributes
 .DS_Store
 
+# Respective gitignore of backend and frontend
 **/.gitignore
