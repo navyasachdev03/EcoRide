@@ -8,5 +8,5 @@
 .gitattributes
 .DS_Store
 
-# Respective gitignore of backend and frontend
+# Respective gitignore files of backend and frontend
 **/.gitignore
