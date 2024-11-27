@@ -78,4 +78,58 @@ const searchRides = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, rides, "Ride searched successfully"));
 });
 
-export { publishRide, searchRides };
+
+const bookRide = asyncHandler(async (req, res) => {
+  const { rideId } = req.body;
+
+  if (!rideId) {
+    throw new ApiError(400, "Ride ID is required");
+  }
+
+  const ride = await Ride.findById(rideId);
+
+  if (!ride) {
+    throw new ApiError(404, "Ride not found");
+  }
+
+
+  if (ride.NumberOfpassengers <= ride.people.length) {
+    throw new ApiError(400, "No seats available for this ride");
+  }
+
+  if (ride.people.includes(req.user._id)) {
+    throw new ApiError(400, "You have already booked this ride");
+  }
+
+  ride.people.push(req.user._id);
+  await ride.save();
+
+  const user = await User.findById(req.user._id);
+
+  if (!user) {
+    throw new ApiError(404, "User not found");
+  }
+
+  user.savedRides.push(ride._id);
+  await user.save();
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, ride, "Ride booked successfully"));
+});
+
+
+const getSavedRides = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id).populate('savedRides');
+
+  if (!user) {
+    throw new ApiError(404, "User not found");
+  }
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, user.savedRides, "Saved rides fetched successfully"));
+});
+
+
+export { publishRide, searchRides, bookRide, getSavedRides };
