@@ -5,6 +5,7 @@ import RideDetails from "../components/RideDetails";
 import { IoTimeOutline } from "react-icons/io5";
 import { TbStackPush, TbStackPop } from "react-icons/tb";
 import { MdPersonAddAlt } from "react-icons/md";
+import Cookies from "js-cookie";
 import API_BASE_URL from '../ApiBaseURL';
 
 function Search() {
@@ -23,6 +24,7 @@ function Search() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    Authorization: `Bearer ${Cookies.get("accessToken")}`,
                 },
                 body: JSON.stringify(rideDetails),
                 credentials: 'include'

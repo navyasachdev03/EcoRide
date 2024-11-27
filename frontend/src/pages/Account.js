@@ -4,6 +4,7 @@ import '../App.css';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useRides } from '../context/RidesContext';
 import API_BASE_URL from '../ApiBaseURL';
+import Cookies from "js-cookie";
 
 const Account = ({ onLogin }) => {
     const [isLogin, setIsLogin] = useState(true);
@@ -42,6 +43,8 @@ const Account = ({ onLogin }) => {
                 console.log('Login response:', data);
                 if (data.statusCode === 200) {
                     const userData = { email: data.data.user.email, name: data.data.user.name, contact: data.data.user.contact, isDriver: data.data.user.isDriver ,  carName: data.data.user.driverVerification.carName, carNumber: data.data.user.driverVerification.carNumber, livePhoto: data.data.user.driverVerification.livePhoto, savedRides:[data.data.user.savedRides] };
+                    Cookies.set("accessToken", data.data.accessToken);
+                    Cookies.set("refreshToken", data.data.refreshToken);
                     onLogin(userData);
                     alert('Login successful');
                 } else if (data.statusCode === 401) {

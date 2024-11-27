@@ -8,6 +8,7 @@ import { LiaCarSideSolid, LiaAngleDoubleRightSolid } from "react-icons/lia";
 import places from "../data/places";
 import driverQuestions from "../data/driverFaq";
 import '../App.css';
+import Cookies from "js-cookie";
 import API_BASE_URL from '../ApiBaseURL';
 
 function OfferRide({userData}) {
@@ -184,6 +185,7 @@ function OfferRide({userData}) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${Cookies.get("accessToken")}`,
             },
             body: JSON.stringify(rideDetails),
             credentials: 'include',
