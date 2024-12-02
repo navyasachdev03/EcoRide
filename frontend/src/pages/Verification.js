@@ -148,7 +148,6 @@ useEffect(() => {
 
   return (
     <div className="flex flex-col mb-20" id="verify">
-      <Navbar />
       <div className="flex flex-col md:flex-row mt-20 md:ml-10">
         <div className="flex-col">
           <h1 className="text-3xl font-bold md:mt-10 mt-10 ml-5 md:ml-12 text-slate-800">

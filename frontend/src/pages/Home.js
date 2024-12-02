@@ -32,8 +32,6 @@ function Home() {
 
     return (
         <div className="flex-col">
-            <div><Navbar /></div>
-
             <div className="relative">
                 <img src="assets/home_img.jpg" alt="Background" className="w-full hidden md:block mt-1" style={{ height: 'auto' }} />
                 <div className="bg-emerald-100 h-80 md:hidden flex items-center justify-center text-center"></div>

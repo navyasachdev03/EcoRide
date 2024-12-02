@@ -46,17 +46,13 @@ function Faq() {
 
     return (
         <div className="faq">
-            <div className="mb-20"><Navbar /></div>
-
             <div>
-                <h1 className="text-xl md:text-3xl font-bold mt-5 text-center text-slate-700">Ecoride Help Centre</h1>
+                <h1 className="text-xl md:text-3xl font-bold mt-20 text-center text-slate-700">Ecoride Help Centre</h1>
                 <div className="grid-container mt-12 ml-4 mr-4 md:ml-20 md:mr-20">
                     {faqItems}
                 </div>
             </div>
-
             <div><Footer /></div>
-
         </div>
     )
 }

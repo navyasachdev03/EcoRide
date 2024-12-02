@@ -91,7 +91,6 @@ function Search() {
 
     return (
         <div className="flex flex-col">
-            <div className="mb-5"><Navbar /></div>
             <div className="bg-white h-20"></div>
             <h2 className="text-slate-800 font-bold md:text-4xl text-2xl text-center">Find a Ride</h2>
             <div className="mt-10 px-12 mb-4"><SearchBar searchRides={searchRides} /></div>

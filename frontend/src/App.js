@@ -7,6 +7,8 @@ import Faq from './pages/Faq';
 import MyRides from './pages/MyRides';
 import Profile from './pages/Profile';
 import Verification from './pages/Verification';
+import LoginPrompt from './components/LoginPrompt';
+import Navbar from './components/Navbar';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 function App() {
@@ -20,7 +22,7 @@ function App() {
     setUserData(userData);
     navigate('/');
   }
-  
+
   const handleProfileVerification = (details) => {
     if (userData) {
       const updatedUserData = {
@@ -44,22 +46,35 @@ function App() {
 
   const determineOfferElement = () => {
 
-    if(userData){
+    if (userData) {
       if (userData.isDriver) {
-        return isDriverVerified ? <OfferRide userData={userData}/> : <Verification onVerify={handleProfileVerification} />;
+        return isDriverVerified ? <OfferRide userData={userData} /> : <Verification onVerify={handleProfileVerification} />;
       }
     }
-    return <Verification onVerify={handleProfileVerification} />; 
+    return <LoginPrompt />;
   };
 
+  const determineSearchElement = () => {
+
+    if (userData) {
+      return <Search />;
+    }
+    return <LoginPrompt />;
+  };
+
+  const handleLogout = () => {
+    setUserData(null);
+    navigate('/');
+  };
 
   return (
     <div className="App">
+      <Navbar userData={userData} onLogout={handleLogout} />
       <div>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/offer" element={determineOfferElement()}/>
+          <Route path="/search" element={determineSearchElement()} />
+          <Route path="/offer" element={determineOfferElement()} />
           <Route path="/account" element={<Account onLogin={handleLogin} />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/myrides" element={<MyRides />} />

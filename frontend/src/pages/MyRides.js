@@ -13,7 +13,6 @@ function MyRides() {
 
     return (
         <div className="flex flex-col text-center">
-            <div><Navbar /></div>
             <div className="bg-white h-10"></div>
 
             {bookedRides.length > 0 ? (

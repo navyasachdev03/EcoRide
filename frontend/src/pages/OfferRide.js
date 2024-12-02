@@ -206,7 +206,6 @@ function OfferRide({userData}) {
 
     return (
         <div className="flex flex-col">
-            <div><Navbar /></div>
             <div className="bg-white h-20"></div>
 
             <div className="bg-emerald-100 p-10">

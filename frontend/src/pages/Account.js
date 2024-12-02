@@ -23,8 +23,8 @@ const Account = ({ onLogin }) => {
     };
 
     const { resetRides } = useRides();
-    
-   
+
+
 
     const handleLogin = () => {
 
@@ -42,7 +42,7 @@ const Account = ({ onLogin }) => {
             .then(data => {
                 console.log('Login response:', data);
                 if (data.statusCode === 200) {
-                    const userData = { email: data.data.user.email, name: data.data.user.name, contact: data.data.user.contact, isDriver: data.data.user.isDriver ,  carName: data.data.user.driverVerification.carName, carNumber: data.data.user.driverVerification.carNumber, livePhoto: data.data.user.driverVerification.livePhoto, savedRides:[data.data.user.savedRides] };
+                    const userData = { email: data.data.user.email, name: data.data.user.name, contact: data.data.user.contact, isDriver: data.data.user.isDriver, carName: data.data.user.driverVerification.carName, carNumber: data.data.user.driverVerification.carNumber, livePhoto: data.data.user.driverVerification.livePhoto, savedRides: [data.data.user.savedRides] };
                     Cookies.set("accessToken", data.data.accessToken);
                     Cookies.set("refreshToken", data.data.refreshToken);
                     onLogin(userData);
@@ -73,7 +73,7 @@ const Account = ({ onLogin }) => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Registration response:', data); 
+                console.log('Registration response:', data);
                 if (data.statusCode === 201) {
                     alert('Signup Successful')
                 } else if (data.statusCode === 409) {
@@ -134,15 +134,24 @@ const Account = ({ onLogin }) => {
 
     return (
         <div className="flex flex-col">
-            <div><Navbar /></div>
-            <div id="account" className="flex flex-col md:flex-row mt-20 md:ml-10">
-                <div>
-                    <h1 className="text-3xl font-bold md:mt-10 mt-10 ml-5 md:ml-12 text-slate-800">Share the Ride! <br />&emsp;&emsp;&emsp;Share the Journey!</h1>
-                    <img src="assets/acc.jpg" alt='logo' className="w-auto h-50 md:w-auto md:h-80 mx-auto md:ml-12 mt-4 md:mt-8" />
-                </div>
-                <div className="w-3/4 md:w-1/4 md:mt-10 flex flex-col md:ml-20 ml-8 md:py-10">
+            <div id="account" className="flex flex-col md:flex-row mt-20 items-center justify-center">
 
-                    <h2 className="text-xl mb-4">{isLogin ? 'Login' : 'Sign Up'}</h2>
+                <div className="md:w-1/2 w-full text-center md:text-left mt-20">
+                    <h1 className="text-3xl font-bold text-slate-800 md:ml-12 mb-6">
+                        Share the Ride! <br />
+                        &emsp;&emsp;Share the Journey!
+                    </h1>
+                    <img
+                        src="assets/acc.jpg"
+                        alt="logo"
+                        className="w-4/5 md:w-3/4 md:h-80 mx-auto md:ml-12"
+                    />
+                </div>
+
+                <div className="md:w-1/3 w-11/12 mt-10 md:mt-0 bg-white p-8">
+                    <h2 className="text-2xl font-semibold text-center mb-6 text-slate-800">
+                        {isLogin ? "Login" : "Sign Up"}
+                    </h2>
 
                     {isLogin ? (
                         <input
@@ -150,30 +159,35 @@ const Account = ({ onLogin }) => {
                             placeholder="Email"
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        />) : (
+                            className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    ) : (
                         <input
                             type="text"
                             name="name"
                             placeholder="Name"
                             value={formData.name}
                             onChange={handleChange}
-                        />)}
+                            className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    )}
 
                     {isLogin ? (
-                        <>
-                            <div className='flex flex-row relative'>
-                                <input
-                                    type={showPassword ? 'text' : 'password'}
-                                    placeholder="Password"
-                                    value={formData.password}
-                                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                                    className='w-full'
-                                />
-                                <div onClick={togglePasswordVisibility} className="absolute inset-y-0 right-0 flex items-center pr-3">
-                                    {showPassword ? (<FaEyeSlash />) : (<FaEye />)}
-                                </div>
+                        <div className="flex flex-row items-center relative mb-4">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Password"
+                                value={formData.password}
+                                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
+                            <div
+                                onClick={togglePasswordVisibility}
+                                className="absolute inset-y-0 right-4 flex items-center cursor-pointer text-gray-500"
+                            >
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
                             </div>
-                        </>
+                        </div>
                     ) : (
                         <>
                             <input
@@ -182,13 +196,21 @@ const Account = ({ onLogin }) => {
                                 placeholder="Contact"
                                 value={formData.contact}
                                 onChange={handleChange}
+                                className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
-                            {!isLogin && errors.contact && <p style={{ color: 'red', fontSize: '14px', width: 'full' }}>{errors.contact}</p>}
+                            {!isLogin && errors.contact && (
+                                <p className="text-red-500 text-sm mb-2">{errors.contact}</p>
+                            )}
                         </>
                     )}
 
                     {isLogin ? (
-                        <button onClick={handleLogin}>Login</button>
+                        <button
+                            onClick={handleLogin}
+                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-md transition-all"
+                        >
+                            Login
+                        </button>
                     ) : (
                         <>
                             <input
@@ -197,43 +219,46 @@ const Account = ({ onLogin }) => {
                                 placeholder="Email"
                                 value={formData.email}
                                 onChange={handleChange}
+                                className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
-                            {!isLogin && errors.email && <p style={{ color: 'red', fontSize: '14px' }}>{errors.email}</p>}
-                        </>
-                    )}
-
-                    {isLogin ? (
-                        <p onClick={() => setIsLogin(!isLogin)}>
-                            Create an account
-                        </p>
-                    ) : (
-                        <>
-                            <div className="flex flex-row relative">
+                            {!isLogin && errors.email && (
+                                <p className="text-red-500 text-sm mb-2">{errors.email}</p>
+                            )}
+                            <div className="flex flex-row items-center relative mb-4">
                                 <input
-                                    type={showPassword ? 'text' : 'password'}
+                                    type={showPassword ? "text" : "password"}
                                     name="password"
                                     placeholder="Password"
                                     value={formData.password}
                                     onChange={handleChange}
-                                    className='w-full'
+                                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
-                                <div onClick={togglePasswordVisibility} className="absolute inset-y-0 right-0 flex items-center pr-3">
-                                    {showPassword ? (<FaEyeSlash />) : (<FaEye />)}
+                                <div
+                                    onClick={togglePasswordVisibility}
+                                    className="absolute inset-y-0 right-4 flex items-center cursor-pointer text-gray-500"
+                                >
+                                    {showPassword ? <FaEyeSlash /> : <FaEye />}
                                 </div>
                             </div>
-                            {!isLogin && errors.password && <p style={{ color: 'red', fontSize: '14px' }}>{errors.password}</p>}
+                            {!isLogin && errors.password && (
+                                <p className="text-red-500 text-sm mb-2">{errors.password}</p>
+                            )}
+                            <button
+                                onClick={handleSignup}
+                                className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-md transition-all"
+                            >
+                                Sign Up
+                            </button>
                         </>
                     )}
 
-                    {isLogin ? (<p></p>) : (
-                        <button onClick={handleSignup}>Sign Up</button>
-                    )}
-
-                    <p onClick={() => setIsLogin(!isLogin)}>
-                        {isLogin ? '' : 'Already have an account?'}
+                    <p
+                        onClick={() => setIsLogin(!isLogin)}
+                        className="mt-4 text-blue-600 text-center cursor-pointer hover:underline"
+                    >
+                        {isLogin ? "Create an account" : "Already have an account?"}
                     </p>
-
-                </div> 
+                </div>
             </div>
         </div>
     );

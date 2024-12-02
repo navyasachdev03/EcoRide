@@ -3,7 +3,7 @@ import { IoLocationOutline, IoCalendarOutline, IoPersonOutline } from "react-ico
 import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
 import places from "../data/places";
 
-function SearchBar({ searchRides }) {
+function SearchBar ({ searchRides }) {
 
     const today = new Date().toISOString().split('T')[0];
 
