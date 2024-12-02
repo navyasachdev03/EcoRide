@@ -28,13 +28,15 @@ const Navbar = ({ userData, onLogout }) => {
   const handleLogout = async () => {
     try {
       const response = await fetch(`${API_BASE_URL}users/logout`, {
-        headers: {Authorization: `Bearer ${Cookies.get("accessToken")}`},
+        headers: { Authorization: `Bearer ${Cookies.get("accessToken")}` },
         method: 'POST',
         credentials: 'include',
       });
 
       if (response.ok) {
         alert('Logged out successfully');
+        Cookies.remove("accessToken");
+        Cookies.remove("refreshToken");
         onLogout();
       } else {
         const data = await response.json();
@@ -46,11 +48,11 @@ const Navbar = ({ userData, onLogout }) => {
     }
   };
 
-  if(userData){
+  if (userData) {
     var username = userData.name;
     var name = username.charAt(0).toUpperCase() + username.slice(1);
   }
-  
+
 
   return (
     <nav className="bg-white p-4 flex justify-between fixed top-0 w-full z-10">
@@ -90,24 +92,24 @@ const Navbar = ({ userData, onLogout }) => {
             </button>
             {isDropdownOpen && (
               <div className="absolute right-2 mt-2 bg-white border border-gray-200 rounded shadow-md w-36">
-                  <Link
-                    to="/profile"
-                    className="block px-4 py-2 text-center hover:bg-gray-100"
-                  >
-                    {name}'s Profile
-                  </Link>
-                  <button
-                    onClick={handleLogout}
-                    className="block w-full text-center px-4 py-2 hover:bg-gray-100"
-                  >
-                    Logout
-                  </button>
-                  <Link
-                    to="/myrides"
-                    className="block px-4 py-2 text-center hover:bg-gray-100"
-                  >
-                    My Rides
-                  </Link>
+                <Link
+                  to="/profile"
+                  className="block px-4 py-2 text-center hover:bg-gray-100"
+                >
+                  {name}'s Profile
+                </Link>
+                <Link
+                  to="/myrides"
+                  className="block px-4 py-2 text-center hover:bg-gray-100"
+                >
+                  My Rides
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="block w-full text-center px-4 py-2 font-semibold text-emerald-500 hover:bg-gray-100"
+                >
+                  Logout
+                </button>
               </div>
             )}
           </div>

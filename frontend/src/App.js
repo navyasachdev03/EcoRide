@@ -65,7 +65,9 @@ function App() {
 
     if (userData) {
       if (userData.isDriver) {
-        return isDriverVerified ? <OfferRide userData={userData} /> : <Verification onVerify={handleProfileVerification} />;
+        return <OfferRide userData={userData} />
+      } else{
+        return <Verification onVerify={handleProfileVerification} />
       }
     }
     return <LoginPrompt />;
@@ -95,7 +97,7 @@ function App() {
           <Route path="/account" element={<Account onLogin={handleLogin} />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/myrides" element={<MyRides />} />
-          <Route path="/profile" element={<Profile userData={userData} />} />
+          <Route path="/profile" element={<Profile userData={userData} onLogout={handleLogout} />} />
         </Routes>
       </div>
     </div>

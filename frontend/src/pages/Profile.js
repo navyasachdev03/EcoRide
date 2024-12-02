@@ -4,25 +4,26 @@ import { SlUser } from "react-icons/sl";
 import { CiCirclePlus } from "react-icons/ci";
 import { MdEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import API_BASE_URL from '../ApiBaseURL';
+import Cookies from "js-cookie";
 
-function Profile({ userData }) {
-
-    const navigate = useNavigate();
+function Profile({ userData, onLogout }) {
 
     const handleLogout = () => {
 
         fetch(`${API_BASE_URL}users/logout`, {
             method: 'POST',
             credentials: 'include',
+            headers: { Authorization: `Bearer ${Cookies.get("accessToken")}` },
         })
             .then(response => response.json())
             .then(data => {
                 if (data.statusCode === 200) {
                     alert('Logout successful');
-                    navigate('/');
+                    Cookies.remove("accessToken");
+                    Cookies.remove("refreshToken");
+                    onLogout();
                 } else {
                     console.error('Logout failed:', data.message);
                 }
