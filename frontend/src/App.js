@@ -10,8 +10,25 @@ import Verification from './pages/Verification';
 import LoginPrompt from './components/LoginPrompt';
 import Navbar from './components/Navbar';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function App() {
+
+
+  useEffect(() => {
+    toast.info("API responses may sometimes take up to 50 seconds to load.", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      style: {
+        color: 'black'
+      }
+    });
+  }, []);
 
   const [userData, setUserData] = useState(null);
   const [isDriverVerified, setIsDriverVerified] = useState(false);

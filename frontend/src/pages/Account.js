@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Navbar from '../components/Navbar';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useRides } from '../context/RidesContext';
@@ -7,6 +6,8 @@ import API_BASE_URL from '../ApiBaseURL';
 import Cookies from "js-cookie";
 
 const Account = ({ onLogin }) => {
+
+
     const [isLogin, setIsLogin] = useState(true);
     const [formData, setFormData] = useState({
         name: '',
@@ -256,7 +257,7 @@ const Account = ({ onLogin }) => {
                         onClick={() => setIsLogin(!isLogin)}
                         className="mt-4 text-blue-600 text-center cursor-pointer hover:underline"
                     >
-                        {isLogin ? "Create an account" : "Already have an account?"}
+                        {isLogin ? "Don't have an account? Sign up now!" : "Already have an account? Log in!"}
                     </p>
                 </div>
             </div>

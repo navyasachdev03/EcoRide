@@ -45,6 +45,11 @@ const Navbar = ({ userData, onLogout }) => {
       alert('An error occurred while logging out.');
     }
   };
+
+  if(userData){
+    var username = userData.name;
+    var name = username.charAt(0).toUpperCase() + username.slice(1);
+  }
   
 
   return (
@@ -89,7 +94,7 @@ const Navbar = ({ userData, onLogout }) => {
                     to="/profile"
                     className="block px-4 py-2 text-center hover:bg-gray-100"
                   >
-                    {userData.name}'s Profile
+                    {name}'s Profile
                   </Link>
                   <button
                     onClick={handleLogout}
